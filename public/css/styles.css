@@ -1,6 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
+
+:root {
+  --primary-color: #00C8FF;
+  --secondary-color: #000000;
+  --tertiary-color: #ffffff;
+  --primary-font: "SUSE", sans-serif;
+}
+
+body {
+  margin: 20px 7rem;
+  font-family: var(--primary-font);
+  border: 7px solid var(--primary-color);
+  border-radius: 15px;
+  background-color: var(--tertiary-color);
+  /*background-image: url("../images/site/checkerboard.jpg");*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
