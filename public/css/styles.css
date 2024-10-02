@@ -183,6 +183,68 @@ footer {
   font-weight: bold;
 }
 
+/* Grid Layout for vehicles view */
+#inv-display {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#inv-display li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#inv-display li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+#inv-display img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.namePrice {
+  margin-top: 15px;
+}
+
+.namePrice hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.namePrice h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.namePrice h2 a {
+  text-decoration: none;
+  color: #333;
+}
+
+.namePrice h2 a:hover {
+  color: var(--primary-color);
+}
+
+.namePrice span {
+  display: block;
+  font-size: 16px;
+  color: #28a745;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;
