@@ -1,0 +1,12 @@
+<!-- Title Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- Message block for displaying possible errors -->
+ <%# messages() %>
+
+ <!-- Main content display -->
+ <%- section %>

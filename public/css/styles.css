@@ -183,7 +183,7 @@ footer {
   font-weight: bold;
 }
 
-/* Grid Layout for vehicles view */
+/* Grid Layout for class view */
 #inv-display {
   list-style-type: none;
   padding: 0;
@@ -242,6 +242,48 @@ footer {
   display: block;
   font-size: 16px;
   color: #28a745;
+  font-weight: bold;
+}
+
+/* Styling for Vehicle view*/
+#vehicle-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#vehicle-details:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+#vehicle-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#vehicle-details h3 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+#vehicle-details p {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin: 10px 0;
+}
+
+#vehicle-details p strong {
   font-weight: bold;
 }
 
@@ -316,6 +358,18 @@ footer {
     text-align: left;
     font-size: 1.1rem;
     padding-top: 1.5rem;
+  }
+
+  #vehicle-details {
+    padding: 15px;
+  }
+
+  #vehicle-details h3 {
+    font-size: 1.5rem;
+  }
+
+  #vehicle-details p {
+    font-size: 1rem;
   }
 }
 
