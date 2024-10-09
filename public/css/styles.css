@@ -287,6 +287,80 @@ footer {
   font-weight: bold;
 }
 
+/* Forms styling*/
+#form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: auto;
+  background-color: rgb(219, 218, 218);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#account-form label {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+#account-form input[type="email"],
+#account-form input[type="password"],
+#account-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#account-form input[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#account-form input[type="submit"]:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+#account-form input:required:invalid, 
+#account-form input:focus:invalid {
+  border-left: 4px solid red;
+  color: #900;
+}
+
+#account-form input:required:valid {
+  border-left: 3px solid green;
+  color: #090;
+}
+
+p {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-top: 15px;
+}
+
+p a {
+  color: var(--secondary-color);
+}
+
+p a:hover {
+  color: var(--primary-color);
+}
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;
@@ -370,6 +444,21 @@ footer {
 
   #vehicle-details p {
     font-size: 1rem;
+  }
+
+  #form {
+    padding: 15px;
+    width: 90%;
+  }
+
+  #account-form input[type="email"],
+  #account-form input[type="password"] {
+      font-size: 14px;
+  }
+
+  #account-form input[type="submit"] {
+      padding: 10px;
+      font-size: 16px;
   }
 }
 
