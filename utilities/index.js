@@ -72,7 +72,7 @@ Util.buildVehicleCard = async function(data) {
     card += '<p><strong>Description:</strong> ' + data[0].inv_description +'</p>'
     card += '<p><strong>Color:</strong> ' + data[0].inv_color +'</p>'
     card += '<p><strong>Miles:</strong> ' + data[0].inv_miles +'</p>'
-    card+= '</section>'
+    card += '</section>'
   } else {
     card += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }

@@ -5,13 +5,23 @@
   res.redirect('/')
 } %>
 
+<!-- Block for displaying errors-->
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 <!-- Block for displaying flash messages-->
- <%- messages() %>
+ <%# messages() %>
 
  <!-- Main content display -->
  <div id="form">
-    <form id="account-form">
-        <label>Email:<input type="email" id="account_email" name="account_email" required placeholder="eg: whatever@whateveragain.com"></label>
+    <form id="account-form" action="/account/login" method="post">
+        <label>Email:<input type="email" id="account_email" name="account_email" required 
+          placeholder="eg: whatever@whateveragain.com" value="<%= locals.account_email %>"></label>
         <label>Password:<input type="password" id="account_password" name="account_password" required 
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"></label>
         <span>The password must be at least 12 characters, one must be a number, one must be a lowercase letter, one must be 
