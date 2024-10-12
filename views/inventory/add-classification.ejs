@@ -1,0 +1,28 @@
+<!-- Title Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- Block for displaying errors-->
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<!-- Message block for displaying flash messages -->
+ <% messages() %>
+
+ <!-- Main content display -->
+ <div id="form">
+  <form id="account-form" action="classform" method="post">
+      <label>Classification Name<input type="text" id="classification_name" name="classification_name" required 
+         value="<%= locals.classification_name %>" pattern="[a-zA-Z]+"></label>
+      <span>The new classification name cannot contain a space or special character of any kind, nor numbers.</span>
+      <input type="submit" value="Add New Class">
+  </form>
+</div>

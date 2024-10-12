@@ -57,7 +57,7 @@ nav a {
   text-decoration: none;
   color: var(--tertiary-color);
   font-size: 1.5rem;
-  margin: 6rem;
+  margin: 3rem;
   padding: 1rem;
 }
 
@@ -245,6 +245,27 @@ footer {
   font-weight: bold;
 }
 
+/* Styling for Management view */
+#inventory-management {
+  text-align: center;
+}
+
+#inventory-management a{
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: .5rem 35rem;
+  padding: 1rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+#inventory-management a:hover{
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
 /* Styling for Vehicle view*/
 #vehicle-details {
   background-color: #f9f9f9;
@@ -311,6 +332,9 @@ footer {
 
 #account-form input[type="email"],
 #account-form input[type="password"],
+#account-form select,
+#account-form textarea,
+#account-form input[type="number"],
 #account-form input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -459,6 +483,11 @@ p a:hover {
   #account-form input[type="submit"] {
       padding: 10px;
       font-size: 16px;
+  }
+
+  #inventory-management a {
+    font-size: 1.2rem;
+    margin: .5rem 2rem;
   }
 }
 

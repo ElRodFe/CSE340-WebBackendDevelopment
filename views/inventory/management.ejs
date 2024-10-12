@@ -1,0 +1,15 @@
+<!-- Title Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- Message block for displaying possible errors -->
+ <%# messages() %>
+
+ <!-- Main Content -->
+<div id="inventory-management">
+  <a href="/inv/classform">Add New Classification</a>
+  <a href="/inv/vehicleform">Add New Vehicle</a>
+</div>
