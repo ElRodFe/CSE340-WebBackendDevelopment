@@ -22,9 +22,10 @@ router.post(
   "/login",
   validate.loginRules(),
   validate.checkLogData,
-  (req, res) => {
-    utilities.handleErrors(res.status(200).send('login process'))
-  }
+  utilities.handleErrors(accountController.accountLogin)
 )
+
+// Default route to the accounts
+router.get("/account", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountView))
 
 module.exports = router;

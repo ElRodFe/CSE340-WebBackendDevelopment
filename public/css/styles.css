@@ -246,7 +246,8 @@ footer {
 }
 
 /* Styling for Management view */
-#inventory-management {
+#inventory-management,
+#modify-inventory {
   text-align: center;
 }
 
@@ -264,6 +265,82 @@ footer {
 #inventory-management a:hover{
   color: var(--primary-color);
   background-color: var(--secondary-color);
+}
+
+#modify-inventory select {
+  max-width: 400px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Table Styling */
+#inventoryDisplay {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+#inventoryDisplay thead {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#inventoryDisplay thead th {
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+  border-bottom: 2px solid #ccc;
+}
+
+#inventoryDisplay tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#inventoryDisplay tbody td {
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+}
+
+#inventoryDisplay tbody td a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+#inventoryDisplay tbody td a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+#inventoryDisplay tbody td {
+  padding-right: 15px;
+}
+
+/* Adjust link button styling */
+#inventoryDisplay tbody td a {
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background-color 0.3s ease;
+}
+
+#inventoryDisplay tbody td a:hover {
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* Styling for Vehicle view*/

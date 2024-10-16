@@ -76,14 +76,12 @@ validate.registVehicleRules = () => {
 
       body("inv_image")
       .trim()
-      .escape()
       .notEmpty()
       .isLength({ min: 1 })
       .withMessage("Please provide a valid image path"),
 
       body("inv_thumbnail")
       .trim()
-      .escape()
       .notEmpty()
       .isLength({ min: 1 })
       .withMessage("Please provide a valid thumbnail path"),
@@ -126,6 +124,36 @@ validate.checkVehicleData = async (req, res, next) => {
       title: "Add a new Vehicle",
       nav,
       select,
+      classification_id,
+      inv_make, inv_model, 
+      inv_description, 
+      inv_year, inv_image, 
+      inv_thumbnail, 
+      inv_price, 
+      inv_miles,
+      inv_color
+    })
+    return
+  }
+  next()
+}
+
+/* ******************************
+* Check data and return errors or continue to Vehicle editing
+* ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_id, classification_id, inv_make, inv_model, inv_description, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body
+  let errors = []
+  let select = await utilities.buildClassificationList(classification_id)
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit " + inv_make + " " + inv_model,
+      nav,
+      select,
+      inv_id,
       classification_id,
       inv_make, inv_model, 
       inv_description, 

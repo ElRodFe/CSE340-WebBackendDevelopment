@@ -32,4 +32,16 @@ router.post("/vehicleform",
     validate.checkVehicleData,
     utilities.handleErrors(invController.registerVehicle));
 
+//Route for JavaScript URL
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+//Route for editing a Vehicle
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditVehicleView))
+
+//Route for submiting vehicle update
+router.post("/update/", 
+    validate.registVehicleRules(),
+    validate.checkUpdateData,
+    utilities.handleErrors(invController.updateVehicle))
+
 module.exports = router;

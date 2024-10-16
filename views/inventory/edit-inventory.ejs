@@ -19,7 +19,7 @@
 
  <!-- Main content display -->
  <div id="form">
-  <form id="account-form" action="vehicleform" method="post">
+  <form id="account-form" action="/inv/update" method="post">
     <label>Classification:<%- select %></label>
     <label>Make:<input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make %>"></label>
     <label>Model:<input type="text" id="inv_model" name="inv_model" required value="<%= locals.inv_model %>"></label>
@@ -32,6 +32,11 @@
     <label>Price:<input type="number" id="inv_price" name="inv_price" step="1" required value="<%= locals.inv_price %>"></label>
     <label>Miles:<input type="number" id="inv_miles" name="inv_miles" step="1" required value="<%= locals.inv_miles %>"></label>
     <label>Color:<input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>"></label>
-      <input type="submit" value="Add New Vehicle">
+      <input id="button" type="submit" value="Update Vehicle" disabled>
+      <input type="hidden" name="inv_id"
+      <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+      <% } %>>
   </form>
 </div>
+
+<script src="../../js/inv-update.js"></script>
