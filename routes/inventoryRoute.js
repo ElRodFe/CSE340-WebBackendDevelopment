@@ -44,4 +44,11 @@ router.post("/update/",
     validate.checkUpdateData,
     utilities.handleErrors(invController.updateVehicle))
 
+//Route for deleting a Vehicle
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteVehicleView))
+
+//Route for submiting vehicle elimination
+router.post("/remove/",
+    utilities.handleErrors(invController.deleteVehicle))
+
 module.exports = router;

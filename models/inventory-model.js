@@ -91,6 +91,19 @@ async function updateVehicle(inv_id, classification_id, inv_make, inv_model, inv
   }
 }
 
+/* *****************************
+*   Delete vehicle
+* *************************** */
+async function deleteVehicle(inv_id){
+  try {
+    const sql = 'DELETE FROM inventory WHERE inv_id = $1';
+    const data = await pool.query(sql, [inv_id])
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerVehicle, updateVehicle}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, registerVehicle, updateVehicle, deleteVehicle}

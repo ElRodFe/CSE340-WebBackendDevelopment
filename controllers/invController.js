@@ -175,7 +175,7 @@ invCont.buildEditVehicleView = async function (req, res, next) {
 }
 
 /* ****************************************
-*  Process new Vehicle
+*  Process Vehicle Update
 * *************************************** */
 invCont.updateVehicle = async function(req, res) {
   let nav = await utilities.getNav()
@@ -210,6 +210,58 @@ invCont.updateVehicle = async function(req, res) {
     inv_miles,
     inv_color,
     classification_id
+    })
+  }
+}
+
+/* ***************************
+ *  Build  view to delete Vehicle
+ * ************************** */
+invCont.buildDeleteVehicleView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  let nav = await utilities.getNav()
+  const item = await invModel.getVehicleById(inv_id)
+  const itemData = item[0]
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+  res.render("inventory/delete-confirm", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price,
+  })
+}
+
+/* ****************************************
+*  Process Vehicle Update
+* *************************************** */
+invCont.deleteVehicle = async function(req, res) {
+  let nav = await utilities.getNav()
+  const { inv_id, inv_make, inv_model, inv_year, inv_price } = req.body
+
+  const deleteResult = await invModel.deleteVehicle(inv_id)
+
+  if (deleteResult) {
+    req.flash(
+      "notice",
+      `The Vehicle ${inv_make} ${inv_model} has been deleted`
+    )
+    res.status(201).redirect("/inv/")
+  } else {
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
+    res.status(501).render("inventory/delete-confirm", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_price,
     })
   }
 }
