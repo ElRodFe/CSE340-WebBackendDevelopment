@@ -128,6 +128,7 @@ Util.checkJWTToken = (req, res, next) => {
      next()
     })
   } else {
+    res.locals.loggedin = 0
    next()
   }
  }
@@ -143,5 +144,22 @@ Util.checkLogin = (req, res, next) => {
    return res.redirect("/account/login")
  }
 }
+
+/* ****************************************
+*  Check Account Type
+* ************************************ */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin && res.locals.accountData) {
+    if (res.locals.accountData.account_type === "Admin" || res.locals.accountData.account_type === "Employee") {
+      next()
+    } else {
+      req.flash("notice", "You don't have permission to access this page, please log in to confirm you are either a Manager or an Employee")
+    return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "You don't have permission to access this page, please log in to confirm you are either a Manager or an Employee")
+    return res.redirect("/account/login")
+  }
+ }
 
 module.exports = Util

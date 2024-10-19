@@ -462,6 +462,31 @@ p a:hover {
   color: var(--primary-color);
 }
 
+/* Account Management Styling */
+#account-management p{
+  text-align: left;
+}
+
+#account-management a {
+  display: block;
+  text-align: center;
+  max-width: 300px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: .5rem;
+  text-decoration: none;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
+}
+
+#account-management a:hover {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;

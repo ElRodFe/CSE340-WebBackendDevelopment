@@ -112,11 +112,84 @@ async function accountLogin(req, res) {
  * ************************************ */
  async function buildAccountView(req, res, next) {
   let nav = await utilities.getNav()
+  const account_name = res.locals.accountData.account_firstname;
+  const account_type = res.locals.accountData.account_type;
   res.render("account/account", {
-      title: "You're logged in",
+      title: "Account Management",
       nav,
+      account_name,
+      account_type,
       errors: null
   })
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountView}
+ /* ****************************************
+ *  Process Logout
+ * ************************************ */
+async function accountLogout(req, res, next) {
+  res.clearCookie('jwt');
+  req.flash("notice", "You are successfully Logged Out")
+  return res.status(201).redirect("./login")
+}
+
+ /* ****************************************
+ *  Edit account view
+ * ************************************ */
+ async function buildEditAccountView(req, res, next) {
+  let nav = await utilities.getNav()
+  const account_name = res.locals.accountData.account_firstname;
+  const account_type = res.locals.accountData.account_type;
+  res.render("account/edit-account", {
+      title: "Edit Account",
+      nav,
+      account_name,
+      account_type,
+      errors: null
+  })
+}
+
+/* ****************************************
+*  Process Account Update
+* *************************************** */
+async function editAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const { account_id, account_firstname, account_lastname, account_email, account_password } = req.body
+
+  let hashedPassword
+
+  if (account_password) {
+    // Hash the password before storing
+    try {
+      // regular password and cost (salt is generated automatically)
+      hashedPassword = await bcrypt.hashSync(account_password, 10)
+    } catch (error) {
+      req.flash("notice", 'Sorry, there was an error processing the registration.')
+      return res.status(500).render("account/edit_account", {
+        title: "Edit Account",
+        nav,
+        errors: null,
+      })
+    }
+  } else {
+    hashedPassword = await accountModel.getPasswordById(account_id)
+  }
+
+  const updateResult = await accountModel.editAccount(account_id, account_firstname, account_lastname, account_email, hashedPassword)
+
+  if (updateResult) {
+    req.flash(
+      "notice",
+      `The account information has been updated`
+    )
+    return res.status(201).redirect("/account/account")
+  } else {
+    req.flash("notice", "Sorry, the insert failed.")
+    return res.status(501).render("account/edit-account", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    })
+  }
+}
+
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountView, accountLogout, buildEditAccountView, editAccount}

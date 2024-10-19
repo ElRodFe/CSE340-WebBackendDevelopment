@@ -1,7 +1,7 @@
 //These accounts are only for testing purpuses
 
-##!rst basic Client
-account_firstname: Basic
+##1rst basic Client
+account_firstname: Simple
 account_lastname: Client
 account_email: basic@340.edu
 account_password: I@mABas1cCl!3nt

@@ -28,4 +28,24 @@ router.post(
 // Default route to the accounts
 router.get("/account", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountView))
 
+// Process Logout
+router.get("/logout", utilities.handleErrors(accountController.accountLogout))
+
+//Route to edit account
+router.get("/edit-account", utilities.handleErrors(accountController.buildEditAccountView))
+
+// Process account info update
+router.post(
+  "/updateAccountInfo",
+  validate.updateAccountInfoRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(accountController.editAccount))
+
+// Process account password update
+router.post(
+  "/updatePassword",
+  validate.passwordUpdateRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(accountController.editAccount))
+
 module.exports = router;
