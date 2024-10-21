@@ -68,5 +68,18 @@ async function editAccount(account_id, account_firstname, account_lastname, acco
   }
 }
 
+/* *****************************
+*   Delete vehicle
+* *************************** */
+async function deleteAccount(account_id){
+  try {
+    const sql = 'DELETE FROM account WHERE account_id = $1';
+    const data = await pool.query(sql, [account_id])
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
 
-  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getPasswordById, editAccount}
+
+  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getPasswordById, editAccount, deleteAccount}

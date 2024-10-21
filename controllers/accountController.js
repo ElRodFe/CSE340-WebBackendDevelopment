@@ -192,4 +192,53 @@ async function editAccount(req, res, next) {
   }
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountView, accountLogout, buildEditAccountView, editAccount}
+ /* ****************************************
+ *  Delete account view
+ * ************************************ */
+ async function buildDeleteAccountView(req, res, next) {
+  let nav = await utilities.getNav()
+  const account_firstname = res.locals.accountData.account_firstname;
+  const account_lastname = res.locals.accountData.account_lastname;
+  const account_type = res.locals.accountData.account_type;
+  const account_email = res.locals.accountData.account_email;
+  res.render("account/delete-account", {
+      title: "Delete Account",
+      nav,
+      account_firstname,
+      account_lastname,
+      account_type,
+      account_email,
+      errors: null
+  })
+}
+
+/* ****************************************
+*  Process Account Deletion
+* *************************************** */
+async function deleteAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const { account_id, account_firstname, account_lastname, account_email } = req.body
+
+  const deleteResult = await accountModel.deleteAccount(account_id)
+
+  if (deleteResult) {
+    req.flash(
+      "notice",
+      `The Account has been successfully deleted. You're logged out now`
+    )
+    res.clearCookie('jwt');
+    res.status(201).redirect("./login")
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.status(501).render("account/delete-account", {
+    title: "Delete Account",
+    nav,
+    errors: null,
+    account_firstname,
+    account_lastname,
+    account_email
+    })
+  }
+}
+
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountView, accountLogout, buildEditAccountView, editAccount, buildDeleteAccountView, deleteAccount}

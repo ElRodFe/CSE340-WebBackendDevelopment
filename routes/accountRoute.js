@@ -48,4 +48,12 @@ router.post(
   validate.checkUpdateData,
   utilities.handleErrors(accountController.editAccount))
 
+//Route to delete account
+router.get("/delete-account", utilities.handleErrors(accountController.buildDeleteAccountView))
+
+// Process account deletion
+router.post(
+  "/delete",
+  utilities.handleErrors(accountController.deleteAccount))
+
 module.exports = router;

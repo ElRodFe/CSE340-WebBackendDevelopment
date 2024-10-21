@@ -252,7 +252,7 @@ invCont.deleteVehicle = async function(req, res) {
     res.status(201).redirect("/inv/")
   } else {
     const itemName = `${inv_make} ${inv_model}`
-    req.flash("notice", "Sorry, the insert failed.")
+    req.flash("notice", "Sorry, the deletion failed.")
     res.status(501).render("inventory/delete-confirm", {
     title: "Delete " + itemName,
     nav,
