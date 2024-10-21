@@ -487,6 +487,10 @@ p a:hover {
   background-color: var(--secondary-color);
 }
 
+footer {
+  margin-top: 5rem;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;
@@ -503,7 +507,13 @@ p a:hover {
     font-size: 1.2rem;
   }
 
+  nav {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   nav a {
+    display: block;
     font-size: 1rem;
     margin: 5px;
     padding: 5px;
@@ -591,8 +601,4 @@ p a:hover {
     font-size: 1.2rem;
     margin: .5rem 2rem;
   }
-}
-
-footer {
-  margin-top: 5rem;
 }
