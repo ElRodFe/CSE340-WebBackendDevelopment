@@ -7,10 +7,12 @@
                 }
             },
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "postgresql://cseprojectdatabase:1cN2xb2ub7u4Aey9OYk20YfZZ6ymI87f@dpg-csd34rhu0jms73coq4p0-a.oregon-postgres.render.com/cseprojectdatabase",
             "driver": "PostgreSQL",
-            "name": "render.com",
-            "connectString": "postgresql://databsecse:bLaro4jkqvtYPaNG5lqfUs2mClBKoaNx@dpg-crq1bertq21c73d9cgjg-a.oregon-postgres.render.com/databsecse"
+            "name": "Render.com",
+            "database": "cseprojectdatabase",
+            "username": "cseprojectdatabase",
+            "connectString": "postgresql://cseprojectdatabase:1cN2xb2ub7u4Aey9OYk20YfZZ6ymI87f@dpg-csd34rhu0jms73coq4p0-a.oregon-postgres.render.com/cseprojectdatabase"
         }
     ]
 }
